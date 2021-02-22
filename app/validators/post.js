@@ -19,8 +19,24 @@ export default BaseValidator.create({
         'twitterDescription',
         'publishedAtBlogTime',
         'publishedAtBlogDate',
-        'emailSubject'
+        'emailSubject',
+        'quotedBy',
+        'quotedAt'
     ],
+
+    quotedBy(model) {
+        if (!validator.isLength(model.quotedBy || '', 0, 300)) {
+            model.errors.add('quotedBy', 'Quoted by cannot be longer than 300 characters.');
+            this.invalidate();
+        }
+    },
+
+    quotedAt(model) {
+        if (!validator.isLength(model.quotedAt || '', 0, 300)) {
+            model.errors.add('quotedAt', 'Quoted at cannot be longer than 300 characters.');
+            this.invalidate();
+        }
+    },
 
     title(model) {
         if (isBlank(model.title)) {

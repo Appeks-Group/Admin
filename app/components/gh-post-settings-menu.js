@@ -28,6 +28,8 @@ export default Component.extend(SettingsMenuMixin, {
     _showSettingsMenu: false,
     _showThrobbers: false,
 
+    quotedByScratch: alias('post.quotedByScratch'),
+    quotedAtScratch: alias('post.quotedAtScratch'),
     canonicalUrlScratch: alias('post.canonicalUrlScratch'),
     customExcerptScratch: alias('post.customExcerptScratch'),
     codeinjectionFootScratch: alias('post.codeinjectionFootScratch'),
@@ -129,6 +131,32 @@ export default Component.extend(SettingsMenuMixin, {
     },
 
     actions: {
+        setQuotedBy(quotedBy) {
+            let post = this.post;
+            let currentQuotedBy = post.get('quotedBy');
+
+            if (quotedBy === currentQuotedBy) {
+                return;
+            }
+
+            post.set('quotedBy', quotedBy);
+
+            return post.validate({property: 'quotedBy'}).then(() => this.savePost.perform());
+        },
+
+        setQuotedAt(quotedAt) {
+            let post = this.post;
+            let currentQuotedAt = post.get('quotedAt');
+
+            if (quotedAt === currentQuotedAt) {
+                return;
+            }
+
+            post.set('quotedAt', quotedAt);
+
+            return post.validate({property: 'quotedAt'}).then(() => this.savePost.perform());
+        },
+
         showSubview(subview) {
             this._super(...arguments);
 

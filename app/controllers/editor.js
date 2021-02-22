@@ -416,6 +416,10 @@ export default Controller.extend({
         this.set('post.twitterDescription', this.get('post.twitterDescriptionScratch'));
         this.set('post.emailSubject', this.get('post.emailSubjectScratch'));
 
+        this.set('post.quotedBy', this.get('post.quotedByScratch'));
+        this.set('post.quotedAt', this.get('post.quotedAtScratch'));
+
+
         if (!this.get('post.slug')) {
             this.saveTitle.cancelAll();
 

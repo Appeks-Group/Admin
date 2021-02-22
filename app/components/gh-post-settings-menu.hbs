@@ -83,6 +83,33 @@
                     </div>
                 {{/if}}
 
+                <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="quotedBy">
+                    <label for="quoted-by">Quoted by</label>
+                    <GhTextInput
+                        @class="post-setting-quoted-by"
+                        @id="quoted-by"
+                        @name="post-setting-quoted-by"
+                        @value={{readonly this.quotedByScratch}}
+                        @input={{action (mut this.quotedByScratch) value="target.value"}}
+                        @focus-out={{action "setQuotedBy" this.quotedByScratch}}
+                        @stopEnterKeyDownPropagation={{true}}
+                        data-test-field="quoted-by" />
+                    <GhErrorMessage @errors={{this.post.errors}} @property="quoted-by" />
+                </GhFormGroup>
+
+                <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="quotedAt">
+                    <label for="quoted-at">Quoted At</label>
+                    <GhTextInput
+                        @class="post-setting-quoted-at"
+                        @id="quoted-at"
+                        @name="post-setting-quoted-at"
+                        @value={{readonly this.quotedAtScratch}}
+                        @input={{action (mut this.quotedAtScratch) value="target.value"}}
+                        @focus-out={{action "setQuotedAt" this.quotedAtScratch}}
+                        @stopEnterKeyDownPropagation={{true}}
+                        data-test-field="quoted-at" />
+                    <GhErrorMessage @errors={{this.post.errors}} @property="quoted-at" />
+                </GhFormGroup>
 
                 <GhFormGroup @errors={{this.post.errors}} @hasValidated={{this.post.hasValidated}} @property="customExcerpt">
                     <label for="custom-excerpt">Excerpt</label>

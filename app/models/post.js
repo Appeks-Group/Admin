@@ -75,6 +75,9 @@ export default Model.extend(Comparable, ValidationEngine, {
     displayName: 'post',
     validationType: 'post',
 
+    quotedBy: attr('string'),
+    quotedAt: attr('string'),
+
     createdAtUTC: attr('moment-utc'),
     excerpt: attr('string'),
     customExcerpt: attr('string'),
@@ -129,6 +132,9 @@ export default Model.extend(Comparable, ValidationEngine, {
     // value so this should be almost entirely internal
     publishedAtBlogDate: '',
     publishedAtBlogTime: '',
+
+    quotedByScratch: boundOneWay('quotedBy'),
+    quotedAtScratch: boundOneWay('quotedAt'),
 
     canonicalUrlScratch: boundOneWay('canonicalUrl'),
     customExcerptScratch: boundOneWay('customExcerpt'),
